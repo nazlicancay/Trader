@@ -43,6 +43,36 @@ class NetworkManager {
             }
         }.resume()
     }
+    
+    //MARK: - function to get users Portfolio infos
+    func getPortfolio(for accountId: String, username: String, password: String, completion: @escaping (Result<PortfolioResponse, Error>) -> Void) {
+           let urlString = "https://tbpilot.matriksdata.com/9999/Integration.aspx?MsgType=AN&CustomerNo=0&Username=\(username)&Password=\(password)&AccountID=\(accountId)&ExchangeID=4&OutputType=2"
+           
+           guard let url = URL(string: urlString) else {
+               completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
+               return
+           }
+           
+           URLSession.shared.dataTask(with: url) { (data, response, error) in
+               if let error = error {
+                   completion(.failure(error))
+                   return
+               }
+               
+               guard let data = data else {
+                   completion(.failure(NSError(domain: "No data received", code: -1, userInfo: nil)))
+                   return
+               }
+               
+               do {
+                   let decoder = JSONDecoder()
+                   let portfolio = try decoder.decode(PortfolioResponse.self, from: data)
+                   completion(.success(portfolio))
+               } catch let jsonError {
+                   completion(.failure(jsonError))
+               }
+           }.resume()
+       }
 
 }
 

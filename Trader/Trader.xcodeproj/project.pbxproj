@@ -17,6 +17,7 @@
 		62778EA32AB4F6E9008C55A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62778EA22AB4F6E9008C55A0 /* NetworkManager.swift */; };
 		62778EA52AB4F70E008C55A0 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62778EA42AB4F70E008C55A0 /* LoginResponseModel.swift */; };
 		62778EA72AB5001E008C55A0 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62778EA62AB5001E008C55A0 /* PortfolioViewController.swift */; };
+		62778EA92AB5D5EE008C55A0 /* PortfolioResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62778EA82AB5D5EE008C55A0 /* PortfolioResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		62778EA22AB4F6E9008C55A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		62778EA42AB4F70E008C55A0 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		62778EA62AB5001E008C55A0 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		62778EA82AB5D5EE008C55A0 /* PortfolioResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				62778EA42AB4F70E008C55A0 /* LoginResponseModel.swift */,
+				62778EA82AB5D5EE008C55A0 /* PortfolioResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				62778E862AB4E885008C55A0 /* AppDelegate.swift in Sources */,
 				62778EA32AB4F6E9008C55A0 /* NetworkManager.swift in Sources */,
 				62778EA12AB4EB35008C55A0 /* LoginPageViewController.swift in Sources */,
+				62778EA92AB5D5EE008C55A0 /* PortfolioResponseModel.swift in Sources */,
 				62778EA72AB5001E008C55A0 /* PortfolioViewController.swift in Sources */,
 				62778E882AB4E885008C55A0 /* SceneDelegate.swift in Sources */,
 			);

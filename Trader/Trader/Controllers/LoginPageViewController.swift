@@ -42,10 +42,13 @@ class LoginPageViewController: UIViewController {
                 
                 if let response = responseModel {
                     if response.Result.State {
-                        // Gelen veriyle ilgili işlemler
-                        // Yönlendirme yapılacak kod burada olacak
-                        self.performSegue(withIdentifier: "GoToPortfolioPage", sender: response.DefaultAccount)
-                    } else {
+                                        let userInfo: [String: String] = [
+                                            "defaultAccount": response.DefaultAccount,
+                                            "username": username,
+                                            "password": password
+                                        ]
+                                        self.performSegue(withIdentifier: "GoToPortfolioPage", sender: userInfo)
+                                    } else {
                         // Hata mesajını göster
                         self.showAlert(title: "Hata", message: response.Result.Description)
                     }
@@ -68,9 +71,12 @@ class LoginPageViewController: UIViewController {
         if segue.identifier == "GoToPortfolioPage" {
             if let navController = segue.destination as? UINavigationController,
                let portfolioVC = navController.viewControllers.first as? PortfolioViewController,
-               let defaultAccount = sender as? String {
-                portfolioVC.defaultAccount = defaultAccount
-            }
+               let userInfo = sender as? [String: String] {
+                
+                portfolioVC.defaultAccount = userInfo["defaultAccount"]
+                portfolioVC.userName = userInfo["username"]
+                portfolioVC.userPassword = userInfo["password"]
+                       }
         }
     }
 
