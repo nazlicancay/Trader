@@ -67,7 +67,7 @@ class LoginPageViewController: UIViewController {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+/*    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToPortfolioPage" {
             if let navController = segue.destination as? UINavigationController,
                let portfolioVC = navController.viewControllers.first as? PortfolioViewController,
@@ -79,6 +79,19 @@ class LoginPageViewController: UIViewController {
                        }
         }
     }
+ */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToPortfolioPage" {
+            if let portfolioVC = segue.destination as? PortfolioViewController,
+               let userInfo = sender as? [String: String] {
+                
+                portfolioVC.defaultAccount = userInfo["defaultAccount"]
+                portfolioVC.userName = userInfo["username"]
+                portfolioVC.userPassword = userInfo["password"]
+            }
+        }
+    }
+
 
         /*
          // MARK: - Navigation

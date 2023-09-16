@@ -21,7 +21,8 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
         PortfoliosTableView.dataSource = self
         PortfoliosTableView.delegate = self
         
-        
+        PortfoliosTableView.register(PortfolioTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "PortfolioHeader")
+
         if let defaultAccount = defaultAccount,
            let username = userName,
            let password = userPassword {
@@ -77,8 +78,40 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
         return 100
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+           let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PortfolioHeader") as! PortfolioTableHeaderView
+           return headerView
+       }
+       
+       func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+           return 50.0 // İstediğiniz yükseklik
+       }
     
-   
+    //MARK: - dip Toplamı bulma fonksiyonu
+
+    func hesaplaToplamTutar() -> Double {
+        var toplam: Double = 0.0
+        for item in portfolioItems {
+            toplam += item.LastPx * Double(item.Qty_T2)
+        }
+        return toplam
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        footerView.backgroundColor = .gray // veya istediğiniz bir renk
+
+        let label = UILabel(frame: CGRect(x: 10, y: 5, width: tableView.frame.size.width - 20, height: 30))
+        label.text = "Toplam Tutar: \(Int(hesaplaToplamTutar()))"
+        footerView.addSubview(label)
+
+        return footerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40
+    }
+
 
         
     
