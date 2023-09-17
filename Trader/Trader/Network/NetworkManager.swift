@@ -46,7 +46,7 @@ class NetworkManager {
     
     //MARK: - function to get users Portfolio infos
     func getPortfolio(for accountId: String, username: String, password: String, completion: @escaping (Result<PortfolioResponse, Error>) -> Void) {
-           let urlString = "https://tbpilot.matriksdata.com/9999/Integration.aspx?MsgType=AN&CustomerNo=0&Username=\(username)&Password=\(password)&AccountID=\(accountId)&ExchangeID=4&OutputType=2"
+           let urlString = "https://tbpilot.matriksdata.com/9999/Integration.aspx?MsgType=AN&CustomerNo=0&Username=\(username)&Password=\(password)&AccountID=\(accountId)1&ExchangeID=4&OutputType=2"
            
            guard let url = URL(string: urlString) else {
                completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))

@@ -40,6 +40,7 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
            let password = userPassword {
             NetworkManager.shared.getPortfolio(for: defaultAccount, username: username, password: password) { result in
                 DispatchQueue.main.async {
+                    
                     switch result {
                     case .success(let portfolioResponse):
                         if portfolioResponse.Result.State {
@@ -47,21 +48,31 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
                             self.PortfoliosTableView.reloadData()
                             for item in portfolioResponse.Item {
                                 print("lastPx: \(item.LastPx), Symbol: \(item.Symbol), Qty_T2: \(item.Qty_T2), Tutar: \(Int(item.Qty_T2 * item.LastPx))")
-
                             }
                         } else {
                             print("Hata: \(portfolioResponse.Result.Description)")
+                            self.showAlert(title: "Hata", message: portfolioResponse.Result.Description)
                         }
                     case .failure(let error):
                         print("Hata: \(error)")
+                        self.showAlert(title: "Hata", message: error.localizedDescription)
                     }
                 }
             }
+
         }
+        
         
        
         
     }
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return portfolioItems.count
