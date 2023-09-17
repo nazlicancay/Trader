@@ -22,7 +22,9 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Theme.backgroundColor
         
+        PortfoliosTableView.backgroundColor = Theme.backgroundColor
         PortfoliosTableView.dataSource = self
         PortfoliosTableView.delegate = self
         
@@ -98,7 +100,7 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
        }
        
        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           return 50.0 // İstediğiniz yükseklik
+           return 100.0
        }
     
     //MARK: - dip Toplamı bulma fonksiyonu
@@ -113,7 +115,7 @@ class PortfolioViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-        footerView.backgroundColor = .gray 
+        footerView.backgroundColor = .gray
 
         let label = UILabel(frame: CGRect(x: 10, y: 5, width: tableView.frame.size.width - 20, height: 30))
         label.textColor = .white
